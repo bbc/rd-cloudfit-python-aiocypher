@@ -5,6 +5,8 @@
 # not have permission to reproduce it.
 
 import asynctest as unittest
+import os
+
 from .. import HAS_AGENSGRAPH
 
 if HAS_AGENSGRAPH:
@@ -12,8 +14,8 @@ if HAS_AGENSGRAPH:
     from aiocypher import Config
     import aiopg
 
-    HOST = 'agensgraph'
-    PORT = 5432
+    HOST = os.environ.get('AGENSGRAPH_HOST', 'localhost')
+    PORT = os.environ.get('AGENSGRAPH_PORT', 15432)
     USER = 'neo4j'
     PASSWORD = 'test'
 
