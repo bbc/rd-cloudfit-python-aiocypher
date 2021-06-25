@@ -27,7 +27,7 @@ class Session (AbstractSession):
         self._connection: Optional[aiopg.Connection] = None
         self.__kwargs = kwargs
 
-        self._dbname = self.__kwargs.get('database', "orbweaver") or "orbweaver"
+        self._dbname = self.__kwargs.get('database', "database") or "database"
 
     async def __aenter__(self) -> 'Session':
         await self._exit_stack.__aenter__()

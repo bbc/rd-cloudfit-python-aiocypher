@@ -17,7 +17,7 @@ if HAS_AGENSGRAPH:
     USER = 'neo4j'
     PASSWORD = 'test'
 
-    DB = "orbweaver"
+    DB = "testdb"
 
     def make_driver():
         config = Config(
