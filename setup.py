@@ -17,12 +17,28 @@ license = ''
 long_description = description
 
 packages = {
-    name: name
+    name: name,
+    name + ".aioagensgraph": name + "/aioagensgraph",
+    name + ".aioneo4j": name + "/aioneo4j",
+    name + ".interface": name + "/interface",
+    name + ".internal": name + "/internal",
 }
 package_names = packages.keys()
 
-# This is where you list packages which are required
-packages_required = []
+packages_required = [
+    "async_generator",
+    "neo4j < 4.3.0",
+    "janus",
+]
+
+extras_require = {
+    "agensgraph": [
+        "agensgraph",
+        "aiopg",
+        "async_exit_stack"
+    ],
+    "neo4j": []
+}
 
 setup(name=name,
       python_requires='>=3.6',
@@ -38,6 +54,7 @@ setup(name=name,
           package_name: ["py.typed"] for package_name in package_names
       },
       install_requires=packages_required,
+      extras_require=extras_require,
       scripts=[],
       data_files=[],
       long_description=long_description)
