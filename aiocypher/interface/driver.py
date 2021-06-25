@@ -5,7 +5,7 @@
 # not have permission to reproduce it.
 
 from .session import Session
-from ...config import Config
+from ..config import Config
 
 from ..internal.abc import AIOCypherABCMeta
 

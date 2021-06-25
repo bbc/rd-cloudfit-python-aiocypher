@@ -8,8 +8,8 @@ import asynctest as unittest
 from .. import HAS_AGENSGRAPH
 
 if HAS_AGENSGRAPH:
-    from orb_weaver_sdk.aiocypher.aioagensgraph.driver import Driver
-    from orb_weaver_sdk.config import Config
+    from aiocypher.aioagensgraph.driver import Driver
+    from aiocypher import Config
     import aiopg
 
     HOST = 'agensgraph'

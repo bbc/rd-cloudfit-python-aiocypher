@@ -19,6 +19,7 @@ from .interface.relationship import Relationship
 from .interface.node import Node
 from .interface.exceptions import QueryFailed
 from .empty import EmptyResult
+from .config import Config
 
 try:
     from . import aioneo4j  # noqa: F401
@@ -40,5 +41,6 @@ __all__ = [
     'Relationship',
     'Node',
     'EmptyResult',
-    'QueryFailed'
+    'QueryFailed',
+    'Config'
 ]

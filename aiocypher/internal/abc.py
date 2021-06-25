@@ -9,7 +9,7 @@ from abc import ABCMeta as ABCMeta
 
 from typing import Type, List, Tuple, Callable, Optional
 
-from ...config import Config
+from ..config import Config
 
 __all__ = [
     "AIOCypherABCMeta"

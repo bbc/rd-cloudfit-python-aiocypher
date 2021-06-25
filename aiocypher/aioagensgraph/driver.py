@@ -17,7 +17,7 @@ import agensgraph as ag  # noqa: F401
 from async_exit_stack import AsyncExitStack
 
 from .session import Session
-from ...config import Config
+from ..config import Config
 
 
 def is_agensgraph_address(config: Config) -> bool:

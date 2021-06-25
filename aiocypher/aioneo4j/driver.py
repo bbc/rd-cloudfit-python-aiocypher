@@ -6,7 +6,7 @@
 
 from ..interface.driver import Driver as AbstractDriver
 from .session import Session
-from ...config import Config
+from ..config import Config
 
 import asyncio
 import time
