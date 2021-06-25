@@ -1,0 +1,3 @@
+include README.md
+recursive-include tests *.py
+include aiocypher/py.typed
