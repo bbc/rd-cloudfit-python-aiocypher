@@ -29,3 +29,6 @@ services:
         depends_on:
             - "neo4j"
             - "agensgraph"
+        environment:
+            - AGENSGRAPH_HOST=agensgraph
+            - AGENSGRAPH_PORT=5432
