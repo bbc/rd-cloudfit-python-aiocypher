@@ -4,17 +4,13 @@ services:
     neo4j:
         image: neo4j:4.0
         ports:
-            - "17687:7687"
+            - "7687"
         environment:
             - NEO4J_AUTH=neo4j/test
             - NEO4J_apoc_export_file_enabled=true
             - NEO4J_apoc_import_file_enabled=true
             - NEO4J_apoc_import_file_use__neo4j__config=true
             - NEO4JLABS_PLUGINS=["apoc"]
-            - HTTP_PROXY=${HTTP_PROXY:-}
-            - HTTPS_PROXY=${HTTPS_PROXY:-}
-            - http_proxy=${http_proxy:-}
-            - https_proxy=${https_proxy:-}
 
     agensgraph:
         image: turicas/agensgraph
@@ -32,3 +28,5 @@ services:
         environment:
             - AGENSGRAPH_HOST=agensgraph
             - AGENSGRAPH_PORT=5432
+            - NEO4J_HOST=neo4j
+            - NEO4J_PORT=7687
