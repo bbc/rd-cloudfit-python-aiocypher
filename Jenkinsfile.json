@@ -1,0 +1,14 @@
+{
+    "vagrant": false,
+    "docker": true,
+    "stages": [
+        "@setup",
+        "@make check-jenkinsfile",
+        "@make check-pr-template",
+        "@make lint",
+        "@make mypy",
+        "@make test",
+        "@make wheel",
+        "@upload artifactory"
+    ]
+}
