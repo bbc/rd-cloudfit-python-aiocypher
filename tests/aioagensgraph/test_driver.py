@@ -4,9 +4,13 @@
 # If you have received a copy of this erroneously then you do
 # not have permission to reproduce it.
 
+import asyncio
 import asynctest as unittest
 import os
 
+import psycopg2
+
+from ..retry_on_exception import retry_on_exception
 from .. import HAS_AGENSGRAPH
 
 if HAS_AGENSGRAPH:
@@ -28,8 +32,19 @@ if HAS_AGENSGRAPH:
             password=PASSWORD)
         return Driver(config)
 
+    @retry_on_exception(exception=psycopg2.OperationalError)
+    async def _check_db_connection():
+        async with aiopg.connect(f"host={HOST} user={USER} password={PASSWORD} port={PORT}"):
+            # Database is connected, tests can continue
+            pass
+
     @unittest.skipUnless(HAS_AGENSGRAPH, "Don't test aioagensgraph unless agensgraph is installed")
     class TestDriver(unittest.TestCase):
+        @classmethod
+        def setUpClass(cls):
+            # asynctest doesn't start a loop here, so instead we do it manually
+            asyncio.get_event_loop().run_until_complete(_check_db_connection())
+
         async def setUp(self):
             async with aiopg.connect(f"host={HOST} user={USER} password={PASSWORD} port={PORT}") as conn:
                 async with conn.cursor() as cur:
