@@ -43,43 +43,8 @@ loop.run_until_complete(basic_query(driver))
 ```
 
 ## Developing with this project
-To run the unit tests on this project you need a running database for it to test against - fortunately you can use
-Docker to start one using the `docker-compose.yml` file provided in this repository.
-
-To run the unit tests, try something like:
-```
-docker-compose up -d agensgraph neo4j
-export NEO4J_PORT=$(docker-compose port neo4j 7687 | cut -d':' -f2)
-export AGENSGRAPH_PORT=$(docker-compose port agensgraph 5432 | cut -d':' -f2)
-tox
-```
-
-This will start a local instance of Neo4j Agensgraph on random ports, set those ports in environment variables and then
-run the tests. Run `docker-compose down` to get rid of the database instances again.
-
-Note that `docker-compose up -d` on it's own isn't likely to work, because it requires a containerised build of the
-unit tests which depends on some internal tooling - see the next section.
-
-You can also run the linter (`tox -e lint`) or typechecker (`tox -e mypy`).
-
-## Developing with this project - using internal tools
-This repository also contains various tooling used by the [Cloud-fit Production team](https://www.bbc.co.uk/rd/projects/cloud-fit-production)
-internally to build software using Docker and Jenkins - if you have access to this tooling the first thing which needs
-to be done before using this project is to run:
-
-```bash
-./initialise_common_tooling.sh
-```
-To which an optional parameter can be passed, which will be the branch name of
-a branch in the commontooling repo to make use of for tooling. The default is
-master. This will pull in a bunch of common components used by makefiles,
-docker, jenkinsfiles, etc.
-
 A Makefile is provided at the top-level of the repository to run common tasks. Run make in the top directory of this
 repository to see what actions are available.
-
-More information on how cloud-fit production services are built, tested, and
-deployed is contained on our confluence pages: <https://confluence.dev.bbc.co.uk/display/CloudFit/Developing+and+Deploying+with+Containers>
 
 ## Questions?
 Any questions, please contact one of the R&D Cloud-Fit Production team, or file an Issue on the repo.
