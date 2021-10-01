@@ -7,6 +7,8 @@ ARG PYTHON_VERSION=3.6
 # Stage: layer
 ###############################################################################
 FROM python:${PYTHON_VERSION} AS layer
+ARG http_proxy=
+ARG https_proxy=
 WORKDIR /aiocypher/
 
 # Copy in wheels if provided
@@ -31,6 +33,8 @@ RUN --mount=type=cache,target=/root/.cache/pip --mount=type=secret,id=forgecert 
 # Stage: testdeps
 ###############################################################################
 FROM python:${PYTHON_VERSION} AS testdeps
+ARG http_proxy=
+ARG https_proxy=
 WORKDIR /testdeps/
 
 # Copy in wheels if provided
@@ -45,6 +49,8 @@ RUN --mount=type=cache,target=/root/.cache/pip --mount=type=secret,id=forgecert 
 # Stage: tests
 ###############################################################################
 FROM layer AS tests
+ARG http_proxy=
+ARG https_proxy=
 WORKDIR /aiocypher/
 
 # Install test dependencies
@@ -56,6 +62,8 @@ ENTRYPOINT []
 # Stage: unittest
 ###############################################################################
 FROM tests AS unittest
+ARG http_proxy=
+ARG https_proxy=
 WORKDIR /aiocypher/
 
 # Set the default command
@@ -66,6 +74,8 @@ CMD ["-v", "-f"]
 # Stage: flake8
 ###############################################################################
 FROM tests AS flake8
+ARG http_proxy=
+ARG https_proxy=
 WORKDIR /aiocypher/
 
 # Copy in .flake8
@@ -79,6 +89,8 @@ CMD ["aiocypher", "tests"]
 # Stage: mypy
 ###############################################################################
 FROM tests AS mypy
+ARG http_proxy=
+ARG https_proxy=
 WORKDIR /aiocypher/
 
 # Copy in .flake8 and setup.cfg
@@ -92,6 +104,8 @@ CMD ["-p", "aiocypher"]
 # Stage: wheel
 ###############################################################################
 FROM layer AS wheel
+ARG http_proxy=
+ARG https_proxy=
 WORKDIR /aiocypher/
 
 RUN pip install -f ./wheels -e .
