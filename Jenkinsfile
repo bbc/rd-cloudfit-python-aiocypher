@@ -13,7 +13,7 @@ pipeline {
     }
     parameters {
         string(name: "PYTHON_VERSION", defaultValue: "3.6", description: "Python version to make available in tox")
-        booleanParam(name: "FORCE_ARTIFACTORYUPLOAD", defaultValue: false, description: "Force upload of python wheels to artifactory")
+        booleanParam(name: "FORCE_PYPIUPLOAD", defaultValue: false, description: "Force upload of python wheels to PyPi")
     }
     environment {
         http_proxy = "http://www-cache.rd.bbc.co.uk:8080"
@@ -56,7 +56,7 @@ pipeline {
         stage ("make push") {
             when {
                 anyOf {
-                    expression { return params.FORCE_ARTIFACTORYUPLOAD }
+                    expression { return params.FORCE_PYPIUPLOAD }
                     expression { env.TAG_NAME != null }
                     expression {
                         bbcShouldUploadArtifacts(branches: ["master"])
@@ -64,10 +64,10 @@ pipeline {
                 }
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: "171bbdf4-7ac0-4323-9d5c-a9fdc5317f45",
+                withCredentials([usernamePassword(credentialsId: "5f2c0fcd-cf71-494a-a642-aa072100171b",
                         passwordVariable: 'TWINE_REPO_PASSWORD',
                         usernameVariable: 'TWINE_REPO_USERNAME')]) {
-                    withEnv(["TWINE_REPO=https://artifactory-noforge.virt.ch.bbc.co.uk/artifactory/api/pypi/ap-python"]) {
+                    withEnv(["TWINE_REPO=https://upload.pypi.org/legacy/"]) {
                         bbcMake "push"
                     }
                 }
