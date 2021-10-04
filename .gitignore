@@ -102,19 +102,6 @@ ENV/
 # mypy
 .mypy_cache/
 
-# coverage
-*,cover
-
-
-#intermediate files
-cogframe.h
-lextab.py
-yacctab.py
-virtpython2
-virtpython3
-mediagrains/cogframe.py
-cog.i
-
 # Vagrant
 .vagrant/
 vagrant-support/roles
@@ -136,12 +123,6 @@ constraints
 constraints.txt
 requirements.txt
 
-# setup.cfg
-setup.cfg
-
-# commontooling itself
-commontooling
-
 # .vscode
 .vscode
 
@@ -154,5 +135,3 @@ _version.py
 # Temporary directories for files copied out of commontooling
 .tmp/
 
-# Extra gitignore lines from Makefile
-Dockerfile.multi
