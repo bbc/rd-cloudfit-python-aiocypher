@@ -2,7 +2,7 @@
 
 A partial Python asyncio wrapper for various [Cypher Query Language](https://neo4j.com/developer/cypher/) drivers
 
-This is not intended to be a full async driver, but a warpper implementation using
+This is not intended to be a full async driver, but a wrapper implementation using
 [run_in_executor](https://bbc.github.io/cloudfit-public-docs/asyncio/asyncio-part-5.html#executors-and-multithreading)
 to allow asynchronous usage of the underlying synchronous driver, replicating the interface of the wrapped library where
 possible.

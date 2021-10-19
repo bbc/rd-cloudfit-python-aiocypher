@@ -19,9 +19,9 @@ from setuptools import setup
 
 # Basic metadata
 name = 'aiocypher'
-version = '0.1.0'
+version = '0.1.1'
 description = 'AsyncIO wrapper around the neo4j driver'
-url = 'https://github.com/bbc/rd-apmm-python-aiocypher'
+url = 'https://github.com/bbc/rd-cloudfit-python-aiocypher'
 author = 'James Weaver'
 author_email = 'james.barett@bbc.co.uk'
 license = 'License :: OSI Approved :: Apache Software License'
