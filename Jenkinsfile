@@ -9,7 +9,7 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '10')) // Discard old builds
     }
     triggers {
-        cron(env.BRANCH_NAME == 'master' ? 'H H(0-8) * * *' : '') // Build master some time every morning
+        cron(env.BRANCH_NAME == 'main' ? 'H H(0-8) * * *' : '') // Build main some time every morning
     }
     parameters {
         string(name: "PYTHON_VERSION", defaultValue: "3.6", description: "Python version to make available in tox")
