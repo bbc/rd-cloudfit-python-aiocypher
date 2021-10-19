@@ -59,7 +59,7 @@ pipeline {
                     expression { return params.FORCE_PYPIUPLOAD }
                     expression { env.TAG_NAME != null }
                     expression {
-                        bbcShouldUploadArtifacts(branches: ["master"])
+                        bbcShouldUploadArtifacts(branches: ["main"])
                     }
                 }
             }
