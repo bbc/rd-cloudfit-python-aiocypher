@@ -113,7 +113,7 @@ endif
 
 TWINE_FLAGS += ${EXTRA_TWINE_FLAGS}
 
-TWINE=${DOCKER} run ${EXTRA_DOCKER_RUN_ARGS} --rm $(TWINE_VOLUMES) jamesbabbc/twine
+TWINE=${DOCKER} run ${EXTRA_DOCKER_RUN_ARGS} --rm $(TWINE_VOLUMES) bbcrd/twine
 
 push: upload-wheel
 upload-wheel: $(WHEEL_FILE) ${SDIST}
