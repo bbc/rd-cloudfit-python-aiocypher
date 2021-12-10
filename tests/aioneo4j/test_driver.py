@@ -15,14 +15,14 @@
 # limitations under the License.
 #
 
-import asynctest as unittest
+import unittest
 
 from .. import HAS_NEO4J
 from .fixtures import clean_session
 
 
 @unittest.skipUnless(HAS_NEO4J, "Don't test aioneo4j unless neo4j is installed")
-class TestDriver(unittest.TestCase):
+class TestDriver(unittest.IsolatedAsyncioTestCase):
     @clean_session
     async def test_basic_query(self, session):
         async with session.begin_transaction() as tx:

@@ -15,8 +15,7 @@
 # limitations under the License.
 #
 
-import asyncio
-import asynctest as unittest
+import unittest
 import os
 
 import psycopg2
@@ -50,12 +49,7 @@ if HAS_AGENSGRAPH:
             pass
 
     @unittest.skipUnless(HAS_AGENSGRAPH, "Don't test aioagensgraph unless agensgraph is installed")
-    class TestDriver(unittest.TestCase):
-        @classmethod
-        def setUpClass(cls):
-            # asynctest doesn't start a loop here, so instead we do it manually
-            asyncio.get_event_loop().run_until_complete(_check_db_connection())
-
+    class TestDriver(unittest.IsolatedAsyncioTestCase):
         async def setUp(self):
             async with aiopg.connect(f"host={HOST} user={USER} password={PASSWORD} port={PORT}") as conn:
                 async with conn.cursor() as cur:
