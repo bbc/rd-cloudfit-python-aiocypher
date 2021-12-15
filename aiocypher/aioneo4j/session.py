@@ -60,7 +60,7 @@ class Session (AbstractSession):
 
     async def __aenter__(self) -> 'Session':
         self.__die = False
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()
         self.__thread = cast(
             'asyncio.Future[None]',
             loop.run_in_executor(None, self._thread_main, await self.sync_driver))

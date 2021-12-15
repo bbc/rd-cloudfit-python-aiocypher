@@ -19,22 +19,32 @@ from setuptools import setup
 
 # Basic metadata
 name = 'aiocypher'
-version = '0.1.1'
 description = 'AsyncIO wrapper around the neo4j driver'
 url = 'https://github.com/bbc/rd-cloudfit-python-aiocypher'
-author = 'James Weaver'
-author_email = 'james.barett@bbc.co.uk'
+author = 'James Sandford'
+author_email = 'james.sandford@bbc.co.uk'
 license = 'License :: OSI Approved :: Apache Software License'
 long_description = description
 
+
+# Execute version file to set version variable
+try:
+    with open(("{}/_version.py".format(name)), "r") as fp:
+        exec(fp.read())
+except IOError:
+    # Version file doesn't exist, fake it for now
+    __version__ = "0.0.0"
+
+package_names = [
+    'aiocypher',
+    'aiocypher.aioagensgraph',
+    'aiocypher.aioneo4j',
+    'aiocypher.interface',
+    'aiocypher.internal'
+]
 packages = {
-    name: name,
-    name + ".aioagensgraph": name + "/aioagensgraph",
-    name + ".aioneo4j": name + "/aioneo4j",
-    name + ".interface": name + "/interface",
-    name + ".internal": name + "/internal",
+    pkg: pkg.replace('.', '/') for pkg in package_names
 }
-package_names = packages.keys()
 
 packages_required = [
     "async_generator",
@@ -52,8 +62,8 @@ extras_require = {
 }
 
 setup(name=name,
-      python_requires='>=3.6',
-      version=version,
+      python_requires='>=3.10',
+      version=__version__,
       description=description,
       url=url,
       author=author,
