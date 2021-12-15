@@ -38,8 +38,7 @@ async def basic_query(driver: Driver):
                 record = result.single()
                 print(record)
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(basic_query(driver))
+asyncio.run(basic_query(driver))
 ```
 
 ## Developing with this project
