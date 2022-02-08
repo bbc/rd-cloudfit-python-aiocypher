@@ -46,4 +46,5 @@ A Makefile is provided at the top-level of the repository to run common tasks. R
 repository to see what actions are available.
 
 ## Questions?
-Any questions, please contact one of the R&D Cloud-Fit Production team, or file an Issue on the repo.
+Any questions, please contact one of the R&D Cloud-Fit Production team on <cloudfit-opensource@rd.bbc.co.uk>, or file an
+Issue on the repo.
