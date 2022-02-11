@@ -21,8 +21,8 @@ from setuptools import setup
 name = 'aiocypher'
 description = 'AsyncIO wrapper around the neo4j driver'
 url = 'https://github.com/bbc/rd-cloudfit-python-aiocypher'
-author = 'James Sandford'
-author_email = 'james.sandford@bbc.co.uk'
+author = 'BBC R&D'
+author_email = 'cloudfit-opensource@rd.bbc.co.uk'
 license = 'License :: OSI Approved :: Apache Software License'
 long_description = description
 
