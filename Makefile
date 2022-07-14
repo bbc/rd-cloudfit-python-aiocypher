@@ -1,4 +1,3 @@
-USE_VERSION_FILE:=TRUE
 MS_DOCKER_UNITTEST:=FALSE
 
 include ./static-commontooling/make/lib_static_commontooling.mk
