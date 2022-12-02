@@ -88,4 +88,4 @@ class Result (AbstractResult[Any]):
     async def data(self) -> List[Dict[str, Any]]:
         """Deserialises the data in this result as a list of dictionaries and returns it.
         """
-        ...
+        return []
