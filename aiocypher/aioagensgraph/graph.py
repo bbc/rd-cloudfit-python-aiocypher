@@ -54,4 +54,4 @@ class Graph (AbstractGraph[Optional[List[Dict[str, str]]]]):
     async def relationships(self) -> Set[Relationship]:
         """This property is a Coroutine, which is weird, but better matches the neo4j interface.
         """
-        ...
+        return set()

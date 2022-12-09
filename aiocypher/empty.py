@@ -25,9 +25,11 @@ from .interface.relationship import Relationship
 
 
 class EmptyGraph (Graph[None]):
+    @property
     async def nodes(self) -> Set[Node]:
         return set()
 
+    @property
     async def relationships(self) -> Set[Relationship]:
         return set()
 

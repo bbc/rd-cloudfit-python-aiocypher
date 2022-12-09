@@ -20,6 +20,8 @@ from ..config import Config
 
 from ..internal.abc import AIOCypherABCMeta
 
+from abc import abstractmethod
+
 from typing import Tuple, Optional, AsyncContextManager
 
 
@@ -39,14 +41,17 @@ class Driver (object, metaclass=AIOCypherABCMeta):
         await self.close()
         return False
 
+    @abstractmethod
     def __await__(self):
         ...
 
+    @abstractmethod
     async def close(self) -> None:
         """This coroutine should be awaited when the driver is no longer needed.
         """
         ...
 
+    @abstractmethod
     def session(self, **kwargs) -> AsyncContextManager[Session]:
         """This method is used to create a Session object, which can be used as an
         asynchronous context manager.
@@ -56,5 +61,6 @@ class Driver (object, metaclass=AIOCypherABCMeta):
         """
         ...
 
+    @abstractmethod
     def database_type(self) -> str:
         ...
