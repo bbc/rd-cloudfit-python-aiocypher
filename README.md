@@ -45,6 +45,10 @@ asyncio.run(basic_query(driver))
 A Makefile is provided at the top-level of the repository to run common tasks. Run make in the top directory of this
 repository to see what actions are available.
 
+## Documentation
+
+The API is well documented in the docstrings of the module aiocypher. A rendered version of this documentation is available [here](https://bbc.github.io/rd-cloudfit-python-aiocypher/aiocypher/aiocypher.html).
+
 ## Questions?
 Any questions, please contact one of the R&D Cloud-Fit Production team on <cloudfit-opensource@rd.bbc.co.uk>, or file an
 Issue on the repo.
