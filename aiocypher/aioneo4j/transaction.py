@@ -60,7 +60,7 @@ class Transaction (AbstractTransaction):
         :returns: The return value of f
         :raises: Any exception raised by f
         """
-        return await self._session_execute(lambda session: f(self._sync_transaction))
+        return await self._session_execute(lambda session: f(self._sync_transaction))  # type: ignore
 
     def run(self, *args, **kwargs) -> Result:
         """This is the main routine for this class.
