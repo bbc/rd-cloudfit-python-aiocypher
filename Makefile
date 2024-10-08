@@ -1,5 +1,9 @@
 MS_DOCKER_UNITTEST:=FALSE
 
+# Import of psycopg2, which is used in aiopg and aiocypher unit tests, failed on Python 3.13.
+# psycopg2 reports support up to 3.12. See also https://github.com/psycopg/psycopg2/issues/1692
+CLOUDFIT_BASE_LABEL:=3.12
+
 include ./static-commontooling/make/lib_static_commontooling.mk
 include ./static-commontooling/make/standalone.mk
 include ./static-commontooling/make/pythonic.mk
