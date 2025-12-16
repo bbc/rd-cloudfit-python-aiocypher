@@ -1,3 +1,7 @@
+> [!CAUTION]
+> This repository is no longer being maintained.
+> An [official Async driver](https://neo4j.com/docs/api/python-driver/current/async_api.html) is now available in the Neo4j library this library wrapped.
+
 # aiocypher
 
 A partial Python asyncio wrapper for various [Cypher Query Language](https://neo4j.com/developer/cypher/) drivers
